@@ -56,6 +56,9 @@ class Literal(Formula):
     def __eq__(self, other):
         return isinstance(other, Literal) and self.lit == other.lit
 
+    def __ne__(self, other):
+        return not self.__eq__(other)
+
     def evaluate(self, values):
         """
         Evaluate the expression given a dictionary mapping literals to values.
@@ -95,6 +98,9 @@ class Not(Formula):
 
     def __eq__(self, other):
         return isinstance(other, Not) and self.term == other.term
+
+    def __ne__(self, other):
+        return not self.__eq__(other)
 
     def evaluate(self, values):
         """
@@ -150,6 +156,9 @@ class Multi(Formula):
 
     def __eq__(self, other):
         return isinstance(other, self.getClass()) and self.lst == other.lst
+
+    def __ne__(self, other):
+        return not self.__eq__(other)
 
     def evaluate(self, values):
         """
