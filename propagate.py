@@ -42,7 +42,7 @@ def cleanTerm(tr, at):
 def cleanTerm2(tr, at):
     clauses = []
     for k in tr.lst:
-        print "curr: ",k
+        #print "curr: ",k
         if isinstance(k, Literal):
             if not k.__eq__(at):
                 clauses.append(k)
@@ -100,4 +100,4 @@ def cleanTerm2(tr, at):
 #print a
 #t = cleanTerm2(t, a)
 #print t
-print Or(1,Not(2),3)
+#print Or(1,Not(2),3)
