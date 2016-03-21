@@ -100,3 +100,4 @@ def cleanTerm2(tr, at):
 #print a
 #t = cleanTerm2(t, a)
 #print t
+print Or(1,Not(2),3)

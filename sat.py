@@ -3,6 +3,15 @@ from read_file import *
 from propagate import *
 from collections import Counter
 
+def buildSoultion(sol):
+    dictsol = {}
+    for k in sol:
+        if isinstance(k,Not):
+            dictsol[int(Not(k).simplify().__str__())]=False
+        else:
+            dictsol[int(k.__str__())]=True
+    return dictsol
+
 def selectTerm(term):
     ts = []
     for k in term.lst:
@@ -32,8 +41,8 @@ def solve(term,solution):
         print "t: ",term
     print "end of up: ",term
     if term == T:
-        print solution
-        return True
+        return solution
+        #return True
     elif term == F:
         return False
     #Assumption
@@ -41,19 +50,29 @@ def solve(term,solution):
     print "assuming: ",g
     #print "term: ",term
     tpos = addTerm(term,g)
-    if solve(tpos,solution):
-        return True
-    else:
+    possolve = solve(tpos,solution);
+    if possolve == False:
         tneg = addTerm(term,Not(g))
         return solve(tneg,solution)
+    else:
+        return possolve
+
 
     #print term
     #print solution
 
 a = readDimacs("sudoku1cnf")
-#a=And(Or(1,2),Or(Not(1),3),Or(Not(1),Not(2),Not(3)))
+#a=And(Or(1,2),Or(Not(1),3),Or(Not(1),Not(2),Not(3)),Or(5,3,1))
 #print a
-solve(a,[])
+sol=solve(a,[])
+print sol
+bs = buildSoultion(sol)
+print buildSoultion(sol)
+h=a.evaluate(bs)
+print "eval:", h
+#print "bs: ",bs[Not(Not(1)).simplify().__str__()]," ms: ",ms[1]
+#print type(1)
+#print type(Not(Not(1)).simplify().__str__())
 #k=selectTerm(a)
 #print k
 #print max(set(k), key=k.count)

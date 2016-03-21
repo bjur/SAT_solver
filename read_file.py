@@ -9,9 +9,12 @@ def readDimacs(filename):
                 if ls[-1] == '0':
                     ls.__delitem__(-1)
                     ls=map(int,ls)
-                    clauses.append(And(ls))
+                    mc = []
+                    for k in ls:
+                        if k<0:
+                            mc.append(Not(abs(k)))
+                        else:
+                            mc.append(k)
+                    clauses.append(Or(mc))
     f.close()
-    return Or(clauses)
-
-t = readDimacs("dimacs_test_1")
-print t
+    return And(clauses).simplify()
