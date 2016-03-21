@@ -23,13 +23,14 @@ def solve(term,solution):
     #Unit propagation
     while True:
         a = getAtom(term)
-        #print "selected: ",a
+        print "selected: ",a
         if a == None:
             break
         else:
             solution.append(a)
-        term=cleanTerm(term,a)
-        #print "t: ",term
+        term=cleanTerm2(term,a)
+        print "t: ",term
+    print "end of up: ",term
     if term == T:
         print solution
         return True
@@ -37,7 +38,7 @@ def solve(term,solution):
         return False
     #Assumption
     g = selectTerm(term)
-    #print "assuming: ",g
+    print "assuming: ",g
     #print "term: ",term
     tpos = addTerm(term,g)
     if solve(tpos,solution):
@@ -50,6 +51,7 @@ def solve(term,solution):
     #print solution
 
 a = readDimacs("sudoku1cnf")
+#a=And(Or(1,2),Or(Not(1),3),Or(Not(1),Not(2),Not(3)))
 #print a
 solve(a,[])
 #k=selectTerm(a)
