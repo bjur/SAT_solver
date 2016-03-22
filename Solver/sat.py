@@ -1,5 +1,3 @@
-from boolean import *
-from read_file import *
 from propagate import *
 from collections import Counter
 
@@ -56,24 +54,3 @@ def solve(term,solution):
         return solve(tneg,solution)
     else:
         return possolve
-
-
-    #print term
-    #print solution
-
-a = readDimacs("sudoku2cnf")
-#a=And(Or(1,2),Or(Not(1),3),Or(Not(1),Not(2),Not(3)),Or(5,3,1))
-#print a
-sol=solve(a,[])
-bs = buildSoultion(sol)
-#print buildSoultion(sol)
-h=a.evaluate(bs)
-print "soultion: ",bs
-print "evaluation of soultion:", h
-#print "bs: ",bs[Not(Not(1)).simplify().__str__()]," ms: ",ms[1]
-#print type(1)
-#print type(Not(Not(1)).simplify().__str__())
-#k=selectTerm(a)
-#print k
-#print max(set(k), key=k.count)
-#print Counter(k).most_common()[0][0]
