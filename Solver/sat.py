@@ -30,23 +30,19 @@ def solve(term,solution):
     #Unit propagation
     while True:
         a = getAtom(term)
-        #print "selected: ",a
         if a == None:
             break
         else:
+            if (Not(a).simplify() in solution):
+                return False
             solution.append(a)
         term=cleanTerm2(term,a)
-        #print "t: ",term
-    print "end of up: ",term
     if term == T:
         return solution
-        #return True
     elif term == F:
         return False
     #Assumption
     g = selectTerm(term)
-    #print "assuming: ",g
-    #print "term: ",term
     tpos = addTerm(term,g)
     possolve = solve(tpos,solution);
     if possolve == False:
