@@ -9,5 +9,7 @@ print("Finding solution")
 sol=solve(input_file,[])
 bs = buildSoultion(sol)
 h=input_file.evaluate(bs)
-print "Solution: ",bs
-print "Evaluation of solution:", h
+print "Solution was found: ", h
+if h:
+    print "Solution: ",bs
+    print "Solution evaluation: ",h
