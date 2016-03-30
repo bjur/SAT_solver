@@ -7,3 +7,8 @@
 
 ### Contributors:
 Bor Juroš, Tilen Kavčič
+
+### Example
+´´´
+cd ./Test_samples/random_ksat-10.dimacs
+´´´
