@@ -1,0 +1,2 @@
+Randomly generated dimacs files with different number of variables/clauses used for testing. All satifiable.
+Note: factoring example takes >60s to compute
