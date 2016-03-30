@@ -11,8 +11,4 @@ if sol == False:
     print "No solution found"
 else:
     bs = buildSoultion(sol)
-    h=input_file.evaluate(bs)
-    print "Solution was found: ", h
-    if h:
-        print "Solution: ",bs
-        print "Solution evaluation: ",h
+    print "Solution: ",bs
