@@ -12,4 +12,3 @@ else:
             print int(s.__str__()),
         else:
             print -int(s.__str__()[1:]),
-print sol
