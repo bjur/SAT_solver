@@ -37,7 +37,6 @@ def solve(term,solution):
             solution.append(a)
         term=cleanTerm2(term,a)
         #print "t: ",term
-    print "end of up: ",term
     if term == T:
         return solution
         #return True
